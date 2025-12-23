@@ -1,5 +1,5 @@
-import { ReactQueryProvider } from "@/lib/providers/react-query";
 import "./globals.css";
+import { ReactQueryProvider } from "@/lib/providers/react-query";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";

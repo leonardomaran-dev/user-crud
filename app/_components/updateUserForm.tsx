@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { DialogFooter } from "@/components/ui/dialog";
+import { DialogClose, DialogFooter } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { User } from "@/lib/types";
@@ -79,8 +79,11 @@ export default function UpdateUserForm({ user, onSuccess }: { user: User, onSucc
                         </FormItem>
                     )}
                 />
-                <DialogFooter>
-                    <Button type="submit" className="mx-auto disabled:opacity-80 disabled:cursor-not-allowed disabled:pointer-events-none" disabled={form.formState.isSubmitting}>
+                <DialogFooter className="flex justify-center">
+                    <DialogClose asChild>
+                        <Button variant="destructive">Cancelar</Button>
+                    </DialogClose>
+                    <Button type="submit" className="disabled:opacity-80 disabled:cursor-not-allowed disabled:pointer-events-none" disabled={form.formState.isSubmitting}>
                         {form.formState.isSubmitting ? 'Salvando...' : 'Salvar'}
                     </Button>
                 </DialogFooter>

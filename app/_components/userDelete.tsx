@@ -34,9 +34,9 @@ export default function UserDelete({ user }: { user: User }) {
                 </DialogHeader>
                 <DialogFooter className="flex justify-center gap-2 mt-5">
                     <DialogClose asChild>
-                        <Button>Cancelar</Button>
+                        <Button variant="destructive">Cancelar</Button>
                     </DialogClose>
-                    <Button onClick={onSubmit} variant="destructive">Excluir</Button>
+                    <Button onClick={onSubmit} >Excluir</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
