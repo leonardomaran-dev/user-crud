@@ -1,3 +1,4 @@
+import { ReactQueryProvider } from "@/lib/providers/react-query";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -20,8 +21,10 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased min-h-screen w-4/5 mx-auto py-6`}
       >
-        {children}
-        <Toaster />
+        <ReactQueryProvider>
+          {children}
+        </ReactQueryProvider>
+        <Toaster position="top-right" />
       </body>
     </html>
   );

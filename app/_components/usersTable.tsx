@@ -1,7 +1,7 @@
-import { Trash, UserPen } from "lucide-react";
-import { Button } from "../../components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table";
 import { User } from "@/lib/types";
+import UserEdit from "./userEdit";
+import UserDelete from "./userDelete";
 
 export default function Userstable({ users }: { users: User[] }) {
 
@@ -16,17 +16,17 @@ export default function Userstable({ users }: { users: User[] }) {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {users.length > 0 ? users.map(({ id, name, email }: User) => (
+                {users.map(({ id, name, email }: User) => (
                     <TableRow key={id}>
                         <TableCell className="font-medium">{id}</TableCell>
                         <TableCell>{name}</TableCell>
                         <TableCell>{email}</TableCell>
                         <TableCell className="flex gap-2">
-                            <Button><UserPen /></Button>
-                            <Button variant="destructive"><Trash /></Button>
+                            <UserEdit user={{ id, name, email }} />
+                            <UserDelete user={{ id, name, email }} />
                         </TableCell>
                     </TableRow>
-                )) : <TableRow><TableCell colSpan={4}>Nenhum há usuários</TableCell></TableRow>}
+                ))}
             </TableBody>
         </Table>
     )

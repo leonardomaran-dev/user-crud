@@ -1,15 +1,14 @@
+'use client'
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Userstable from "@/app/_components/usersTable";
-import { createClient } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
+import { useGetAllUsers } from "@/lib/hooks/useGetAllUsers";
+import { Spinner } from "@/components/ui/spinner";
+import { CircleX, RotateCw } from "lucide-react";
 
-export default async function Home() {
-  const cookieStore = await cookies()
-  const supabase = createClient(cookieStore)
-
-  const { data } = await supabase.from('users').select().range(0, 9)
+export default function Home() {
+  const { data: users, isLoading, error } = useGetAllUsers()
 
   return (
     <main className="flex flex-col gap-10 justify-center dark:bg-black">
@@ -24,7 +23,14 @@ export default async function Home() {
         </div>
         <Button type="submit">Adicionar</Button>
       </div>
-      <Userstable users={data || []} />
+
+      {isLoading ? <div className="flex items-center justify-center"><Spinner className="size-6" /></div> : <Userstable users={users || []} />}
+      {error && <div className="flex flex-col items-center gap-2">
+        <span className="flex items-center gap-2">
+          <CircleX /> Ocorreu um Erro ao Obter os Usuários!
+        </span>
+        <RotateCw onClick={() => window.location.reload()} className="size-5 cursor-pointer hover:scale-105" />
+      </div>}
     </main>
   );
 }
