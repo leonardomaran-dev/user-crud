@@ -7,8 +7,9 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "User CRUD",
-  description: "Desenvolvido por Leonardo Maran",
+  title: "CRUD",
+  authors: [{ name: "Leonardo Maran" }],
+  description: "CRUD de Usuários",
 };
 
 export default function RootLayout({
@@ -19,10 +20,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${inter.className} antialiased min-h-screen w-4/5 mx-auto py-6`}
+        className={`${inter.className} antialiased min-h-screen`}
       >
         <ReactQueryProvider>
-          {children}
+          <div className="mx-auto w-full max-w-5xl px-4 py-6">
+            {children}
+          </div>
         </ReactQueryProvider>
         <Toaster position="top-right" />
       </body>

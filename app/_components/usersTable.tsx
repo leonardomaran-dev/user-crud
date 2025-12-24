@@ -26,51 +26,52 @@ export default function Userstable() {
                         <TableHead>#</TableHead>
                         <TableHead>Nome</TableHead>
                         <TableHead>Email</TableHead>
-                        <TableHead>Ações</TableHead>
+                        <TableHead className="text-center">Ações</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {loading ? (
+                    {loading && users.length === 0 ? (
                         <TableRow>
-                            <TableCell colSpan={4}>
-                                <Spinner className='size-6 mx-auto' />
+                            <TableCell colSpan={4} className="h-32 text-center">
+                                <Spinner className="size-6 mx-auto" />
                             </TableCell>
                         </TableRow>
-                    ) : users.length > 0 ? (
-                        users.map(({ id, name, email }: User) => (
-                            <TableRow
-                                key={id}
-                                className="transition-colors border-b border-gray-100 last:border-b-0"
-                            >
-                                <TableCell className="font-medium text-gray-600">
-                                    {id}
-                                </TableCell>
-                                <TableCell className="py-3">
-                                    {name}
-                                </TableCell>
-                                <TableCell className="font-semibold text-gray-700">
-                                    {email}
-                                </TableCell>
-                                <TableCell className="flex gap-2">
-                                    <UserEdit user={{ id, name, email }} />
-                                    <UserDelete user={{ id, name, email }} />
-                                </TableCell>
-                            </TableRow>
-                        ))
                     ) :
-                        (
-                            <TableRow>
-                                <TableCell colSpan={4} className="h-32 text-center">
-                                    <div className="flex flex-col items-center justify-center space-y-2">
-                                        <p className="text-gray-500 font-medium">Nenhum usuário encontrado...</p>
-                                    </div>
-                                </TableCell>
-                            </TableRow>
-                        )}
+                        users.length > 0 ? (
+                            users.map(({ id, name, email }: User) => (
+                                <TableRow
+                                    key={id}
+                                    className="transition-colors border-b border-gray-100 last:border-b-0"
+                                >
+                                    <TableCell className="font-medium text-gray-600">
+                                        {id}
+                                    </TableCell>
+                                    <TableCell className="py-3 max-w-[100px] md:max-w-[150px] truncate">
+                                        {name}
+                                    </TableCell>
+                                    <TableCell className="font-semibold text-gray-700 max-w-[100px] md:max-w-[150px] truncate">
+                                        {email}
+                                    </TableCell>
+                                    <TableCell className="flex gap-2 justify-center">
+                                        <UserEdit user={{ id, name, email }} />
+                                        <UserDelete user={{ id, name, email }} />
+                                    </TableCell>
+                                </TableRow>
+                            ))
+                        ) :
+                            (
+                                <TableRow>
+                                    <TableCell colSpan={4} className="h-32 text-center">
+                                        <div className="flex flex-col items-center justify-center space-y-2">
+                                            <p className="text-gray-500 font-medium">Nenhum usuário encontrado...</p>
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            )}
                 </TableBody>
             </Table>
 
-            {!loading && users.length > 0 && (
+            {users.length > 0 && (
                 <div className='py-2'>
                     <Pagination
                         currentPage={currentPage}

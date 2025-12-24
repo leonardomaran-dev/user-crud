@@ -12,7 +12,6 @@ interface PaginationProps {
   loading?: boolean;
   onNextPage: () => void;
   onPrevPage: () => void;
-  onGoToPage?: (page: number) => void;
 }
 
 export type { User, PaginationProps };

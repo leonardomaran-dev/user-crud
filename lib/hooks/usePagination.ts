@@ -1,24 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { User } from "../types";
+import { useState } from "react";
 import { createClient } from "../supabase/client";
+import { useQuery } from "@tanstack/react-query";
 
 export function usePagination() {
   const ITEMS_PER_PAGE = 10;
-  const [users, setUsers] = useState<User[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(false);
-  const [hasPrevPage, setHasPrevPage] = useState(false);
-  const [totalPages, setTotalPages] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const supabase = createClient();
+  const from = (currentPage - 1) * ITEMS_PER_PAGE;
+  const to = from + ITEMS_PER_PAGE - 1;
 
-  const fetchUsers = async (page: number) => {
-    try {
-      const supabase = createClient();
-      const from = (page - 1) * ITEMS_PER_PAGE;
-      const to = from + ITEMS_PER_PAGE - 1;
-
+  const { data, isFetching, isLoading } = useQuery({
+    queryKey: ["users", currentPage],
+    queryFn: async () => {
       const { data, error, count } = await supabase
         .from("users")
         .select("*", { count: "exact" })
@@ -27,43 +22,37 @@ export function usePagination() {
 
       if (error) throw error;
 
-      setUsers(data || []);
-
-      if (count) {
-        setTotalPages(Math.ceil(count / ITEMS_PER_PAGE));
-      }
-      setHasPrevPage(page > 1);
-      setHasNextPage(count ? from + ITEMS_PER_PAGE < count : false);
-    } catch (error) {
-      console.error("Error ao buscar usuários:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchUsers(currentPage);
-  }, [currentPage]);
+      return {
+        users: data ?? [],
+        totalPages: count ? Math.ceil(count / ITEMS_PER_PAGE) : 0,
+        hasNextPage: count ? from + ITEMS_PER_PAGE < count : false,
+        hasPrevPage: currentPage > 1,
+      };
+    },
+    placeholderData: (previousData) => previousData,
+    staleTime: 1000 * 60,
+  });
 
   const nextPage = () => {
-    if (hasNextPage) {
+    if (data?.hasNextPage) {
       setCurrentPage((prev) => prev + 1);
     }
   };
 
   const prevPage = () => {
-    if (hasPrevPage) {
+    if (data?.hasPrevPage) {
       setCurrentPage((prev) => prev - 1);
     }
   };
 
   return {
-    users,
+    users: data?.users ?? [],
     currentPage,
-    loading,
-    hasNextPage,
-    hasPrevPage,
-    totalPages,
+    totalPages: data?.totalPages ?? 0,
+    hasNextPage: data?.hasNextPage ?? false,
+    hasPrevPage: data?.hasPrevPage ?? false,
+    loading: isFetching,
+    initialLoading: isLoading,
     nextPage,
     prevPage,
   };

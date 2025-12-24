@@ -15,9 +15,9 @@ export default function Pagination({ currentPage,
             <button
                 onClick={onPrevPage}
                 disabled={!hasPrevPage || loading}
-                className={`px-4 py-2 rounded text-blue-500 ${hasPrevPage && !loading
-                    ? 'cursor-pointer'
-                    : 'cursor-not-allowed pointer-events-none opacity-50'
+                className={`px-4 py-2 rounded text-blue-500 ${!hasPrevPage || loading
+                    ? "opacity-50 cursor-not-allowed"
+                    : "cursor-pointer"
                     }`}
             >
                 <MoveLeft />
@@ -30,9 +30,9 @@ export default function Pagination({ currentPage,
             <button
                 onClick={onNextPage}
                 disabled={!hasNextPage || loading}
-                className={`px-4 py-2 rounded text-blue-500 ${hasNextPage && !loading
-                    ? 'cursor-pointer'
-                    : 'cursor-not-allowed pointer-events-none opacity-50'
+                className={`px-4 py-2 rounded text-blue-500 ${!hasNextPage || loading
+                    ? "opacity-50 cursor-not-allowed"
+                    : "cursor-pointer"
                     }`}
             >
                 <MoveRight />
