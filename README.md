@@ -26,11 +26,11 @@ Projeto de CRUD (Create, Read, Update, Delete) de Usuários, desenvolvido com o 
 │   ├── layout.tsx
 │   └── page.tsx
 ├── components
-|   └── ui
+│   └── ui
 ├── lib
-|   ├── hooks
-|   ├── providers
-|   └── supabase
+│   ├── hooks
+│   ├── providers
+│   └── supabase
 ├── public
 ├── .env.example
 ├── .gitignore
