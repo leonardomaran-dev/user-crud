@@ -68,16 +68,6 @@ Instale as dependências
   yarn install
 ```
 
-Instale as dependências
-
-```bash
-  npm install
-  # ou
-  pnpm install
-  # ou
-  yarn install
-```
-
 Crie o arquivo .env
 
 ```bash
