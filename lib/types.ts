@@ -4,6 +4,12 @@ interface User {
   email: string;
   created_at?: string;
 }
+
+interface CreateUser {
+  name: string;
+  email: string;
+}
+
 interface PaginationProps {
   totalPages: number;
   currentPage: number;
@@ -14,4 +20,4 @@ interface PaginationProps {
   onPrevPage: () => void;
 }
 
-export type { User, PaginationProps };
+export type { User, PaginationProps, CreateUser };
