@@ -18,6 +18,7 @@ Projeto de CRUD (Create, Read, Update, Delete) de Usuários, desenvolvido com o 
 - Banco de Dados: Supabase(Postgres)
 
 ## 📂 Estrutura do Projeto
+
 ```bash
 ├── app
 │   ├── _components
@@ -41,7 +42,8 @@ Projeto de CRUD (Create, Read, Update, Delete) de Usuários, desenvolvido com o 
 ├── postcss.config.mjs
 ├── README.md
 └── tsconfig.json
-``` 
+```
+
 ## ⚙️ Configuração do Ambiente
 
 Clone o projeto
@@ -62,8 +64,33 @@ Instale as dependências
   npm install
   # ou
   pnpm install
-  # ou 
+  # ou
   yarn install
+```
+
+Instale as dependências
+
+```bash
+  npm install
+  # ou
+  pnpm install
+  # ou
+  yarn install
+```
+
+Crie o arquivo .env
+
+```bash
+cp .env.example .env
+```
+
+Configure o .env
+
+```bash
+#SUPABASE
+
+NEXT_PUBLIC_SUPABASE_URL='<YOUR-SUPABASE-URL>'
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY='<YOUR-SUPABASE-PUBLISHABLE-DEFAULT-KEY>'
 ```
 
 Inicie o servidor
@@ -72,16 +99,16 @@ Inicie o servidor
   npm run dev
   # ou
   pnpm dev
-  # ou 
+  # ou
   yarn run dev
 ```
 
-
 ## 👤 Autor
+
 Leonardo Maran
+
 - GitHub: https://github.com/leonardomaran-dev
 - LinkedIn: https://www.linkedin.com/in/leonardo-maran-02275a2b1
-
 
 ## 📄 Licença
 
