@@ -2,32 +2,87 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { User } from "@/lib/types";
 import UserEdit from "./userEdit";
 import UserDelete from "./userDelete";
+import { usePagination } from "@/lib/hooks/usePagination";
+import { Spinner } from "@/components/ui/spinner";
+import Pagination from "@/components/ui/pagination";
 
-export default function Userstable({ users }: { users: User[] }) {
+export default function Userstable() {
+    const {
+        loading,
+        users,
+        currentPage,
+        hasNextPage,
+        hasPrevPage,
+        totalPages,
+        nextPage,
+        prevPage,
+    } = usePagination()
 
     return (
-        <Table>
-            <TableHeader>
-                <TableRow>
-                    <TableHead>#</TableHead>
-                    <TableHead>Nome</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Ações</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {users.map(({ id, name, email }: User) => (
-                    <TableRow key={id}>
-                        <TableCell className="font-medium">{id}</TableCell>
-                        <TableCell>{name}</TableCell>
-                        <TableCell>{email}</TableCell>
-                        <TableCell className="flex gap-2">
-                            <UserEdit user={{ id, name, email }} />
-                            <UserDelete user={{ id, name, email }} />
-                        </TableCell>
+        <>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>#</TableHead>
+                        <TableHead>Nome</TableHead>
+                        <TableHead>Email</TableHead>
+                        <TableHead>Ações</TableHead>
                     </TableRow>
-                ))}
-            </TableBody>
-        </Table>
+                </TableHeader>
+                <TableBody>
+                    {loading ? (
+                        <TableRow>
+                            <TableCell colSpan={4}>
+                                <Spinner className='size-6 mx-auto' />
+                            </TableCell>
+                        </TableRow>
+                    ) : users.length > 0 ? (
+                        users.map(({ id, name, email }: User) => (
+                            <TableRow
+                                key={id}
+                                className="transition-colors border-b border-gray-100 last:border-b-0"
+                            >
+                                <TableCell className="font-medium text-gray-600">
+                                    {id}
+                                </TableCell>
+                                <TableCell className="py-3">
+                                    {name}
+                                </TableCell>
+                                <TableCell className="font-semibold text-gray-700">
+                                    {email}
+                                </TableCell>
+                                <TableCell className="flex gap-2">
+                                    <UserEdit user={{ id, name, email }} />
+                                    <UserDelete user={{ id, name, email }} />
+                                </TableCell>
+                            </TableRow>
+                        ))
+                    ) :
+                        (
+                            <TableRow>
+                                <TableCell colSpan={4} className="h-32 text-center">
+                                    <div className="flex flex-col items-center justify-center space-y-2">
+                                        <p className="text-gray-500 font-medium">Nenhum usuário encontrado...</p>
+                                    </div>
+                                </TableCell>
+                            </TableRow>
+                        )}
+                </TableBody>
+            </Table>
+
+            {!loading && users.length > 0 && (
+                <div className='py-2'>
+                    <Pagination
+                        currentPage={currentPage}
+                        hasNextPage={hasNextPage}
+                        hasPrevPage={hasPrevPage}
+                        onNextPage={nextPage}
+                        onPrevPage={prevPage}
+                        loading={loading}
+                        totalPages={totalPages}
+                    />
+                </div>
+            )}
+        </>
     )
 }
