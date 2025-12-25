@@ -1,4 +1,4 @@
-# CRUD de Usuários
+# CRUD de Usuários (NetxJs + Supabase)
 
 ## 📌 Funcionalidades
 
@@ -9,11 +9,6 @@
 - ✏️ Atualizar dados de usuários
 
 - ❌ Remover usuários
-
-## 🛠️ Tecnologias Utilizadas
-
-- Framework: NextJs
-- Banco de Dados: Supabase(Postgres)
 
 ## 📂 Estrutura do Projeto
 
