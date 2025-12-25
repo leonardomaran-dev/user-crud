@@ -1,7 +1,5 @@
 # CRUD de Usuários
 
-Projeto de CRUD (Create, Read, Update, Delete) de Usuários, desenvolvido com o objetivo de gerenciar usuários de forma simples, organizada e escalável. Este projeto pode ser utilizado como base para estudos, testes técnicos ou como ponto de partida para aplicações maiores.
-
 ## 📌 Funcionalidades
 
 - ➕ Criar usuários
@@ -44,6 +42,31 @@ Projeto de CRUD (Create, Read, Update, Delete) de Usuários, desenvolvido com o 
 └── tsconfig.json
 ```
 
+## ⚙️ Configuração do Banco de Dados (Supabase)
+Este projeto utiliza o Supabase como banco de dados PostgreSQL e backend-as-a-service.
+
+1️⃣ Criar o projeto no Supabase
+
+- Acesse: https://supabase.com
+- Crie um novo projeto
+- Anote as seguintes informações: 
+  * `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY`
+
+2️⃣ Criar a tabela `users`
+
+- Crie uma tabela chamada `users`
+
+3️⃣ Criar as colunas `name` e `email`
+
+| Coluna   | Tipo       | Opções                     |
+| :---------- | :--------- | :---------------------- |
+| `name` | `text` ||
+| `email` | `text` | `Is Unique` |
+
+```notes
+Obs: colunas 'id' e 'created_at' já estão configuradas por padrão
+```
+
 ## ⚙️ Configuração do Ambiente
 
 Clone o projeto
@@ -79,8 +102,8 @@ Configure o .env
 ```bash
 #SUPABASE
 
-NEXT_PUBLIC_SUPABASE_URL='<YOUR-SUPABASE-URL>'
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY='<YOUR-SUPABASE-PUBLISHABLE-DEFAULT-KEY>'
+NEXT_PUBLIC_SUPABASE_URL='<SUA-SUPABASE-URL>'
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY='<SUA-SUPABASE-PUBLISHABLE-DEFAULT-KEY>'
 ```
 
 Inicie o servidor
