@@ -50,6 +50,7 @@ Este projeto utiliza o Supabase como banco de dados PostgreSQL e backend-as-a-se
 2️⃣ Criar a tabela `users`
 
 - Crie uma tabela chamada `users`
+- Desabilite o `RLS`
 
 3️⃣ Criar as colunas `name` e `email`
 

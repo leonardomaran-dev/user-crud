@@ -23,7 +23,7 @@ export default function Pagination({ currentPage,
                 <MoveLeft />
             </button>
 
-            <div className="font-semibold text-black">
+            <div className="font-semibold text-black dark:text-white">
                 {currentPage} - {totalPages}
             </div>
 

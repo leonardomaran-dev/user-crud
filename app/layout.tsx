@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { ReactQueryProvider } from "@/lib/providers/react-query";
 import type { Metadata } from "next";
@@ -20,13 +21,15 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${inter.className} antialiased min-h-screen`}
+        className={`${inter.className} antialiased min-h-screen dark:bg-black`}
       >
-        <ReactQueryProvider>
-          <div className="mx-auto w-full max-w-5xl px-4 py-6">
-            {children}
-          </div>
-        </ReactQueryProvider>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <ReactQueryProvider>
+            <div className="mx-auto w-full max-w-5xl px-4 py-6">
+              {children}
+            </div>
+          </ReactQueryProvider>
+        </ThemeProvider>
         <Toaster position="top-right" />
       </body>
     </html>
