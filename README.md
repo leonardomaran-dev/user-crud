@@ -1,4 +1,4 @@
-# CRUD de Usuários (NetxJs + Supabase)
+# CRUD de Usuários (NextJs + Supabase)
 
 ## 📌 Funcionalidades
 
