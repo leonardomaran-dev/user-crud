@@ -40,8 +40,12 @@ export default function UserCreate() {
                     toast.success('Usuário criado com sucesso')
                     form.reset()
                 },
-                onError: () => {
-                    toast.error('Erro ao criar usuário')
+                onError: (err: Error) => {
+                    if ('code' in err && err.code === '23505') {
+                        toast.error('Email já cadastrado')
+                    } else {
+                        toast.error('Erro ao criar usuário')
+                    }
                 },
             }
         )
