@@ -12,7 +12,11 @@
 
 ## 📸 Screenshot
 
+Versão Desktop
 ![Screenshot da Aplicação](./.github/desktop.png)
+
+Versão Mobile
+![Screenshot da Aplicação](./.github/mobile.png)
 
 ## 🛠️ Tecnologias Utilizadas 
 
