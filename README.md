@@ -12,11 +12,11 @@
 
 ## 📸 Screenshot
 
-Versão Desktop
 ![Screenshot da Aplicação](./.github/desktop.png)
+![Screenshot da Aplicação](./.github/desktop-darkmode.png)
 
-Versão Mobile
 ![Screenshot da Aplicação](./.github/mobile.png)
+![Screenshot da Aplicação](./.github/mobile-darkmode.png)
 
 ## 🛠️ Tecnologias Utilizadas 
 
