@@ -30,6 +30,11 @@
 ## 📂 Estrutura do Projeto
 
 ```bash
+├── .github
+│   ├── desktop.png
+│   ├── mobile.png
+│   ├── desktop-darkmode.png
+│   └── mobile-darkmode.png
 ├── app
 │   ├── _components
 │   ├── favicon.ico
