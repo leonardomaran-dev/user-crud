@@ -66,6 +66,10 @@ Obs: colunas 'id' e 'created_at' já estão configuradas por padrão
 ## 🌱 Populando o Banco de Dados
 
 O Supabase permite adicionar registros através de upload de arquivo `.csv`, você pode criá-lo manualmente ou pedir para IA criá-lo com a quantidade desejada.
+Você pode popular o banco de dados de duas maneiras:
+
+1.  **Via Editor SQL:** Copie e cole o conteúdo do arquivo `seed.sql` no **SQL Editor** do seu projeto Supabase e execute o comando.
+2.  **Via CSV:** O Supabase também permite adicionar registros através de upload de arquivo `.csv`. Você pode criar um arquivo CSV manualmente ou usar uma ferramenta para gerar dados fictícios.
 
 ## ⚙️ Configuração do Ambiente
 
