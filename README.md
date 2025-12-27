@@ -1,4 +1,4 @@
-# CRUD de Usuários (NextJs + Supabase)
+# CRUD de Usuários (Next.js + Supabase)
 
 ## 📌 Funcionalidades
 
@@ -37,7 +37,7 @@
 └── tsconfig.json
 ```
 
-## ⚙️ Configuração do Banco de Dados (Supabase)
+## ⚙️ Configuração do Banco de Dados
 Este projeto utiliza o Supabase como banco de dados PostgreSQL e backend-as-a-service.
 
 1️⃣ Criar o projeto no Supabase
@@ -50,7 +50,7 @@ Este projeto utiliza o Supabase como banco de dados PostgreSQL e backend-as-a-se
 2️⃣ Criar a tabela `users`
 
 - Crie uma tabela chamada `users`
-- Desabilite o `RLS`
+- Desabilite o `RLS` (⚠️ **Nota:** Isso deixa o banco público. Para produção, configure Políticas de Segurança RLS).
 
 3️⃣ Criar as colunas `name` e `email`
 
@@ -59,9 +59,13 @@ Este projeto utiliza o Supabase como banco de dados PostgreSQL e backend-as-a-se
 | `name` | `text` ||
 | `email` | `text` | `Is Unique` |
 
-```notes
+```bash
 Obs: colunas 'id' e 'created_at' já estão configuradas por padrão
 ```
+
+## 🌱 Populando o Banco de Dados
+
+O Supabase permite adicionar registros através de upload de arquivo `.csv`, você pode criá-lo manualmente ou pedir para IA criá-lo com a quantidade desejada.
 
 ## ⚙️ Configuração do Ambiente
 
