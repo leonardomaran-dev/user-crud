@@ -51,12 +51,12 @@
 ├── .env.example
 ├── .gitignore
 ├── components.json
+├── db.sql
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── package.json
 ├── postcss.config.mjs
 ├── README.md
-├── seed.sql
 └── tsconfig.json
 ```
 
@@ -100,7 +100,7 @@ Encontre-as em: Acesse o Projeto -> Connect -> App Frameworks -> Next.js
 ```
 2️⃣ Criar a tabela `users`
 
-- Copie e cole o conteúdo do arquivo `seed.sql` (raíz do projeto) no **SQL Editor** do seu projeto Supabase e execute o comando.
+- Copie e cole o conteúdo do arquivo `db.sql` (raíz do projeto) no **SQL Editor** do seu projeto Supabase e execute o comando.
 
 ```bash
 Este comando irá criar a tabela e alguns registros fictícios
