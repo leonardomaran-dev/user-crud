@@ -1,6 +1,13 @@
--- Inserir dados de exemplo na tabela 'users'
+-- Criando e Inserindo Dados na Tabela
 
-INSERT INTO public.users (name, email) VALUES
+CREATE TABLE users (
+    id BIGSERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+INSERT INTO users (name, email) VALUES
 ('Alice Johnson', 'alice.j@example.com'),
 ('Bob Williams', 'bob.w@example.com'),
 ('Charlie Brown', 'charlie.b@example.com'),

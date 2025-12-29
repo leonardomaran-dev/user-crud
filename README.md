@@ -60,42 +60,7 @@
 └── tsconfig.json
 ```
 
-## ⚙️ Configuração do Banco de Dados
-Este projeto utiliza o Supabase como banco de dados PostgreSQL e backend-as-a-service.
-
-1️⃣ Criar o projeto no Supabase
-
-- Acesse: https://supabase.com
-- Crie um novo projeto
-- Anote as seguintes informações: 
-  * `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY`
-
-2️⃣ Criar a tabela `users`
-
-- Crie uma tabela chamada `users`
-- Desabilite o `RLS` (⚠️ **Nota:** Isso deixa o banco público. Para produção, configure Políticas de Segurança RLS).
-
-3️⃣ Criar as colunas `name` e `email`
-
-| Coluna   | Tipo       | Opções                     |
-| :---------- | :--------- | :---------------------- |
-| `name` | `text` ||
-| `email` | `text` | `Is Unique` |
-
-```bash
-Obs: colunas 'id' e 'created_at' já estão configuradas por padrão
-```
-
-## 🌱 Populando o Banco de Dados
-
-O Supabase permite adicionar registros através de upload de arquivo `.csv`, você pode criá-lo manualmente ou pedir para IA criá-lo com a quantidade desejada.
-Você pode popular o banco de dados de duas maneiras:
-
--  **Via Editor SQL:** Copie e cole o conteúdo do arquivo `seed.sql` no **SQL Editor** do seu projeto Supabase e execute o comando.
-
--  **Via CSV:** O Supabase também permite adicionar registros através de upload de arquivo `.csv`. Você pode criar um arquivo CSV manualmente ou usar uma ferramenta para gerar dados fictícios.
-
-## ⚙️ Configuração do Ambiente
+## ⚙️ Instalação do Projeto
 
 Clone o projeto
 
@@ -119,13 +84,47 @@ Instale as dependências
   yarn install
 ```
 
-Crie o arquivo .env
+## ⚙️ Configuração do Banco de Dados
+Este projeto utiliza o Supabase como banco de dados PostgreSQL e backend-as-a-service.
+
+1️⃣ Criar o projeto no Supabase
+
+- Acesse: https://supabase.com
+- Crie um novo projeto
+- Anote as seguintes informações: 
+  * `NEXT_PUBLIC_SUPABASE_URL`
+  * `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY`
+
+```bash
+Encontre-as em: Acesse o Projeto -> Connect -> App Frameworks -> Next.js
+```
+2️⃣ Criar a tabela `users`
+
+- Copie e cole o conteúdo do arquivo `seed.sql` (raíz do projeto) no **SQL Editor** do seu projeto Supabase e execute o comando.
+
+```bash
+Este comando irá criar a tabela e alguns registros fictícios
+```
+⚠️ **Nota:** O RLS precisa estar desabilitado.
+
+## Estrutura do Banco de Dados
+
+| Coluna   | Tipo       | Opções                     |
+| :---------- | :--------- | :---------------------- |
+| `id` | `int8` |`Primary Key`|
+| `name` | `text` ||
+| `email` | `text` | `Is Unique` |
+| `created_at` | `timestamptz` |`DEFAULT: NOW()`|
+
+## ⚙️ Configuração do Ambiente
+
+1️⃣ Crie o arquivo .env
 
 ```bash
 cp .env.example .env
 ```
 
-Configure o .env
+2️⃣ Configure o .env
 
 ```bash
 #SUPABASE
@@ -134,7 +133,7 @@ NEXT_PUBLIC_SUPABASE_URL='<SUA-SUPABASE-URL>'
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY='<SUA-SUPABASE-PUBLISHABLE-DEFAULT-KEY>'
 ```
 
-Inicie o servidor
+3️⃣ Inicie o servidor
 
 ```bash
   npm run dev
@@ -143,6 +142,7 @@ Inicie o servidor
   # ou
   yarn run dev
 ```
+⚠️ **Nota:** Por padrão seu projeto rodará em: `http://localhost:3000`
 
 ## 👤 Autor
 
