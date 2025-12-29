@@ -142,7 +142,7 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY='<SUA-SUPABASE-PUBLISHABLE-DEFAULT-
   # ou
   yarn run dev
 ```
-⚠️ **Nota:** Por padrão seu projeto rodará em: `http://localhost:3000`
+⚠️ **Nota:** Por padrão seu projeto rodará em: [http://localhost:3000](http://localhost:3000)
 
 ## 👤 Autor
 
