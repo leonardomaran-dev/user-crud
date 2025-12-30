@@ -26,6 +26,8 @@
 - Tailwind CSS: Framework de CSS utilitário para estilização. 
 - Shadcn/ui: Coleção de componentes de UI. 
 - Lucide React: Biblioteca de ícones. 
+- React Hook Form: Formulários flexíveis com validação.
+- Tanstack Query: Busca de dados e armazenamento em cache.
 
 ## 📂 Estrutura do Projeto
 
