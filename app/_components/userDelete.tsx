@@ -22,13 +22,16 @@ export default function UserDelete({ user }: { user: User }) {
         })
     }
     return (
-        <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild><Button variant="destructive"><UserRoundX /></Button></DialogTrigger>
-            <DialogContent onOpenAutoFocus={(e) => e.preventDefault()}>
+        <Dialog open={open} onOpenChange={setOpen} >
+            <DialogTrigger asChild><Button data-cy="btn-delete-user" variant="destructive"><UserRoundX /></Button></DialogTrigger>
+            <DialogContent onOpenAutoFocus={(e) => e.preventDefault()} data-cy="dialog-delete-user">
                 <DialogHeader>
-                    <DialogTitle className="text-xl font-bold text-center mb-5">Excluindo {user.name}</DialogTitle>
+                    <DialogTitle className="mx-auto text-xl font-bold text-center mb-5 max-w-100 truncate">Excluindo {user.name}</DialogTitle>
                     <DialogDescription className="text-center space-y-2 text-semibold text-md">
-                        <p>Tem certeza que deseja excluir <span className="font-bold text-destructive italic">{user.name}</span> ?</p>
+                        <div className="flex justify-center gap-1">
+                            <p className="max-w-100 truncate">Tem certeza que deseja excluir <span className="font-bold text-destructive italic">{user.name}</span></p>
+                            <p>?</p>
+                        </div>
                         <p>Essa ação <span className="font-semibold text-destructive">NÃO</span> poderá ser desfeita.</p>
                     </DialogDescription>
                 </DialogHeader>
@@ -36,7 +39,7 @@ export default function UserDelete({ user }: { user: User }) {
                     <DialogClose asChild>
                         <Button variant="destructive">Cancelar</Button>
                     </DialogClose>
-                    <Button onClick={onSubmit} >Excluir</Button>
+                    <Button onClick={onSubmit} data-cy="btn-delete-user-submit">Excluir</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

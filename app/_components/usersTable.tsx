@@ -46,10 +46,10 @@ export default function Userstable() {
                                     <TableCell className="font-medium text-gray-600">
                                         {id}
                                     </TableCell>
-                                    <TableCell className="py-3 max-w-[100px] md:max-w-[150px] truncate">
+                                    <TableCell className="py-3 max-w-25 md:max-w-37.5 truncate">
                                         {name}
                                     </TableCell>
-                                    <TableCell className="font-semibold text-gray-700 max-w-[100px] md:max-w-[150px] truncate">
+                                    <TableCell className="font-semibold text-gray-700 max-w-25 md:max-w-37.5 truncate">
                                         {email}
                                     </TableCell>
                                     <TableCell className="flex gap-2 justify-center">

@@ -40,12 +40,11 @@ export default function UserCreate() {
                     toast.success('Usuário criado com sucesso')
                     form.reset()
                 },
-                onError: (err: Error) => {
-                    if ('code' in err && err.code === '23505') {
-                        toast.error('Email já cadastrado')
-                    } else {
-                        toast.error('Erro ao criar usuário')
-                    }
+                onError: () => {
+                    form.setError('email', {
+                        type: 'manual',
+                        message: 'Email já cadastrado!',
+                    })
                 },
             }
         )
@@ -60,9 +59,9 @@ export default function UserCreate() {
                         <FormItem>
                             <FormLabel>Nome</FormLabel>
                             <FormControl>
-                                <Input {...field} />
+                                <Input {...field} data-cy="name-input" />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage data-cy="create-name-error-message" />
                         </FormItem>
                     )}>
                 </FormField>
@@ -73,14 +72,14 @@ export default function UserCreate() {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input {...field} />
+                                <Input {...field} data-cy="email-input" />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage data-cy="create-email-error-message" />
                         </FormItem>
                     )}>
                 </FormField>
                 <div className="flex items-center h-full">
-                    <Button type="submit" disabled={form.formState.isSubmitting} className="disabled:opacity-80 disabled:cursor-not-allowed disabled:pointer-events-none">
+                    <Button type="submit" disabled={form.formState.isSubmitting} className="disabled:opacity-80 disabled:cursor-not-allowed disabled:pointer-events-none" data-cy="submit-button">
                         {form.formState.isSubmitting ? 'Adicionando...' : 'Adicionar'}
                     </Button>
                 </div>

@@ -23,7 +23,7 @@ export default function UpdateUserForm({ user, onSuccess }: { user: User, onSucc
         email: z.string().min(1, {
             message: 'Email é obrigatório!',
         }).email({
-            message: 'Email inválido',
+            message: 'Email inválido!',
         }),
     })
 
@@ -44,7 +44,10 @@ export default function UpdateUserForm({ user, onSuccess }: { user: User, onSucc
                     toast.success('Usuário atualizado com sucesso')
                 },
                 onError: () => {
-                    toast.error('Erro ao atualizar usuário')
+                    form.setError('email', {
+                        type: 'manual',
+                        message: 'Email já cadastrado!',
+                    })
                 },
             }
         )
@@ -60,9 +63,9 @@ export default function UpdateUserForm({ user, onSuccess }: { user: User, onSucc
                         <FormItem>
                             <FormLabel>Nome</FormLabel>
                             <FormControl>
-                                <Input placeholder="Nome" {...field} />
+                                <Input placeholder="Nome" {...field} data-cy="name-input-update" />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage data-cy="update-name-error-message" />
                         </FormItem>
                     )}
                 />
@@ -73,9 +76,9 @@ export default function UpdateUserForm({ user, onSuccess }: { user: User, onSucc
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input placeholder="Email" {...field} />
+                                <Input placeholder="Email" {...field} data-cy="email-input-update" />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage data-cy="update-email-error-message" />
                         </FormItem>
                     )}
                 />
@@ -83,7 +86,7 @@ export default function UpdateUserForm({ user, onSuccess }: { user: User, onSucc
                     <DialogClose asChild>
                         <Button variant="destructive">Cancelar</Button>
                     </DialogClose>
-                    <Button type="submit" className="disabled:opacity-80 disabled:cursor-not-allowed disabled:pointer-events-none" disabled={form.formState.isSubmitting}>
+                    <Button type="submit" className="disabled:opacity-80 disabled:cursor-not-allowed disabled:pointer-events-none" disabled={form.formState.isSubmitting} data-cy="submit-button-update">
                         {form.formState.isSubmitting ? 'Salvando...' : 'Salvar'}
                     </Button>
                 </DialogFooter>
